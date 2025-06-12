@@ -8,7 +8,7 @@ let dotRadius = 2; // Dot radius in the Sensing-Feeling pattern
 // Store original triangle positions for responsive design
 let relativeTriangles = [];
 
-// Add global variables to "top left zone" 
+// Add global variables for "top left zone" 
 let topLeftRectSizeNoise = [];
 let topLeftRectPosNoiseX = [];
 let topLeftRectPosNoiseY = [];
@@ -18,6 +18,13 @@ let topLeftCirclePosNoiseY = [];
 const noiseArrayLength = 100;
 const noiseStep = 0.05;
 
+// Add global variables of "easing + transformation" animation for "top right zone"
+const lineAnimationTime = 180; // Whole animation time
+const lineEntranceFactor = 0.7; // Entrance animation ratio
+
+// Add animation variables for "top right lines"
+let topRightAnimationFrame = 0;
+let topRightNoiseOffset = 0;
 
 /************** Color palrtte and random function **************/
 const palette = [
@@ -295,12 +302,8 @@ const circles_bottomright_blue = [
   { x: 450, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
   { x: 470, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
   { x: 490, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 410, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 430, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 450, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 470, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 490, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
-
+  { x1: 410, y1: 290, x2: 430, y2: 290, color: 'rgba(17, 99, 247, 1)' },
+  { x1: 450, y1: 290, x2: 470, y2: 290, color: 'rgba(17, 99, 247, 1)' },
 ]
 const lines_bottomright = [
   { x1: 0, y1: 200, x2: 180, y2: 200 },
@@ -528,6 +531,15 @@ function drawTopLeft(scaleX, scaleY) {
 
 //---------------- Function: draw top right shapes ----------------//
 function drawTopRight(scaleX, scaleY) {
+  // Update animation variables
+  topRightAnimationFrame = (topRightAnimationFrame + 1) % lineAnimationTime;
+  topRightNoiseOffset += 0.02;
+
+  // Calculate noise-based speed factor
+  // Use the noise() function to generate a speed change factor (0.8-1.2 times)
+  // To make the animation speed have a natural fluctuation effect
+  let speedFactor = map(noise(topRightNoiseOffset), 0, 1, 0.8, 1.2);
+
   push();
   translate(width, 0); // Move the origin to the right side
   scale(-1, 1);        // Flip horizontally
@@ -608,26 +620,58 @@ function drawTopRight(scaleX, scaleY) {
     );
   }
 
-  //Draw lines
-  for (let i = 0; i < lines_topright_1.length; i++) {
-    let l = lines_topright_1[i];
+  // Draw animated lines with entrance effects  using noise, easing, and axis-based transform
+  // Group all lines and animate based on their orientation
+  // This group method is generate from Copilot
+  /* Prompts: I want to use the method of "if the x1 and x2 coordinates are almost the same (the difference is less than 1),
+              it means this is a vertical line" to distinguish the horizontal and vertical line animations in the three const groups.
+              How can I modify the code without adjusting the const array?
+  */
+  let allLines = [
+    // Spread all items from lines_topright_n,
+    // and for each line, add a new property: weight = m
+    ...lines_topright_1.map(l => ({ ...l, weight: 10 })),// ...1: Keep all original properties of the line (x1, y1, x2, y2)
+    ...lines_topright_2.map(l => ({ ...l, weight: 5 })),
+    ...lines_topright_3.map(l => ({ ...l, weight: 2 }))
+  ];
+
+  for (let i = 0; i < allLines.length; i++) {
+    let l = allLines[i];
+    let isVertical = abs(l.x1 - l.x2) < 1;   // If x coordinates are nearly the same, it's vertical
+    let isHorizontal = abs(l.y1 - l.y2) < 1; // If y coordinates are nearly the same, it's horizontal
+
+    // Calculate animation progress with offset based on line index
+    let progress = ((topRightAnimationFrame * speedFactor + i * 5) % lineAnimationTime) / lineAnimationTime;
+    let ease = easeAnimation(progress % 1);
+
+    let translateX = 0;
+    let translateY = 0;
+
+    if (isHorizontal) {
+      // Horizontal line - animate from left
+      // ease from 0 to 1, map maps it to -200 * scaleX to 0
+      // means smooth transition from left -200px * scale ratio to target position
+      translateX = map(ease, 0, 1, -200 * scaleX, 0);
+    } else if (isVertical) {
+      // Vertical line - animate from top
+      // Similarly, translate from -200 * scaleY to 0 to achieve top-down animation
+      translateY = map(ease, 0, 1, -200 * scaleY, 0);
+    }
+
+    push();
+    translate(translateX, translateY);
     stroke(makeRGB(0, 0, 0));
-    strokeWeight(10);
+    strokeWeight(l.weight); // 'l.weight' was defined when I created 'allLines' by mapping each line and adding a custom 'weight' property
     line(l.x1 * scaleX, l.y1 * scaleY, l.x2 * scaleX, l.y2 * scaleY);
+    pop();
   }
-  for (let i = 0; i < lines_topright_2.length; i++) {
-    let l = lines_topright_2[i];
-    stroke(makeRGB(0, 0, 0));
-    strokeWeight(5);
-    line(l.x1 * scaleX, l.y1 * scaleY, l.x2 * scaleX, l.y2 * scaleY);
-  }
-  for (let i = 0; i < lines_topright_3.length; i++) {
-    let l = lines_topright_3[i];
-    stroke(makeRGB(0, 0, 0));
-    strokeWeight(2);
-    line(l.x1 * scaleX, l.y1 * scaleY, l.x2 * scaleX, l.y2 * scaleY);
-  }
+
   pop();
+}
+
+// Easing function for smooth animation
+function easeAnimation(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
 //--------------------- Function: draw bottom left triangles-----------------------//
