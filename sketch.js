@@ -8,6 +8,16 @@ let dotRadius = 2; // Dot radius in the Sensing-Feeling pattern
 // Store original triangle positions for responsive design
 let relativeTriangles = [];
 
+// Add global variables to "top left zone" 
+let topLeftRectSizeNoise = [];
+let topLeftRectPosNoiseX = [];
+let topLeftRectPosNoiseY = [];
+let topLeftCircleSizeNoise = [];
+let topLeftCirclePosNoiseX = [];
+let topLeftCirclePosNoiseY = [];
+const noiseArrayLength = 100;
+const noiseStep = 0.05;
+
 
 /************** Color palrtte and random function **************/
 const palette = [
@@ -290,7 +300,7 @@ const circles_bottomright_blue = [
   { x: 450, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
   { x: 470, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
   { x: 490, y: 290, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  
+
 ]
 const lines_bottomright = [
   { x1: 0, y1: 200, x2: 180, y2: 200 },
@@ -341,9 +351,25 @@ const arcs_bottomright = [
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  noLoop();
+  //noLoop();// Remove noLoop() so that the draw function can continue to play the animation.
   generateStructuredTriangles(6, 8); // Rule grid structure
   updateTriangles();
+
+  // Pre-generate Perlin Noise sequence for the TopLeft region
+  for (let i = 0; i < noiseArrayLength; i++) {
+    // Noise of rectangle size variation
+    topLeftRectSizeNoise.push(noise(i * noiseStep));
+    // Noise of rectangle position X offset
+    topLeftRectPosNoiseX.push(noise(i * noiseStep + 10)); // +10 错开噪点起始
+    // Noise of rectangle position Y offset
+    topLeftRectPosNoiseY.push(noise(i * noiseStep + 20));
+    // Noise of varying circular size
+    topLeftCircleSizeNoise.push(noise(i * noiseStep + 30));
+    // Noise of circular position X offset
+    topLeftCirclePosNoiseX.push(noise(i * noiseStep + 40));
+    // Noise of circular position Y offset
+    topLeftCirclePosNoiseY.push(noise(i * noiseStep + 50));
+  }
 }
 
 
@@ -373,7 +399,7 @@ function draw() {
 
   //-------------Draw coordinate axes and text------------//
   drawCoordinates();
-  
+
 }
 
 
@@ -416,30 +442,44 @@ function drawLinesInCircle(circleObj) {
 /************************ Function zone 2 - Drawing four parts ************************/
 //---------------- Function: draw top left shapes ----------------//
 function drawTopLeft(scaleX, scaleY) {
+  // get current noise array
+  let currentIndex = frameCount % noiseArrayLength;
   for (let i = 0; i < rects_topleft.length; i++) {
     let r = rects_topleft[i];
     fill(r.color);
     noStroke();
-    let x = r.x * scaleX;
-    let y = r.y * scaleY;
-    let w = r.w * scaleX;
-    let h = r.h * scaleY;
-    rect(x, y, w, h);
 
-    if (r.dots) {
-      drawDotsInRect({ x, y, w, h }, scaleX, scaleY);
-    }
+    // Get values ​​from a pre-generated noise array
+    let rectNoiseIndex = (currentIndex + i * 5) % noiseArrayLength;
+    // Size noise: let the width and height fluctuate slightly above and below the original size
+    let sizeFactor = map(topLeftCircleSizeNoise[rectNoiseIndex], 0, 1, 0.98, 1.03);
+    // Position noise
+    let offsetX = map(topLeftRectPosNoiseX[rectNoiseIndex], 0, 1, -1, 1) * scaleX;
+    let offsetY = map(topLeftRectPosNoiseY[rectNoiseIndex], 0, 1, -1, 1) * scaleY;
+    // Apply noise animation
+    let startW = r.w * scaleX;
+    let startH = r.h * scaleY;
+    let animatedW = startW * sizeFactor;
+    let animatedH = startH * sizeFactor;
+    let x = r.x * scaleX + offsetX + (startW - animatedW) / 2;
+    let y = r.y * scaleY + offsetY + (startH - animatedH) / 2;
+
+    rect(x, y, animatedW, animatedH);
   }
+
   // Draw triangles
   for (let i = 0; i < triangles_topleft.length; i++) {
     let t = triangles_topleft[i];
+    let triangleNoiseIndex = (currentIndex + i * 12) % noiseArrayLength;
     fill(t.color);
     noStroke();
     beginShape();
     for (let j = 0; j < t.points.length; j++) {
       let point = t.points[j];
-      let x = point.x * scaleX;
-      let y = point.y * scaleY;
+      let tOffsetX = map(topLeftCirclePosNoiseX[triangleNoiseIndex], 0, 1, -0.8, 0.8) * scaleX;
+      let tOffsetY = map(topLeftCirclePosNoiseY[triangleNoiseIndex], 0, 1, -0.8, 0.8) * scaleY;
+      let x = point.x * scaleX + tOffsetX;
+      let y = point.y * scaleY + tOffsetY;
       vertex(x, y);
     }
     endShape(CLOSE);
@@ -449,23 +489,37 @@ function drawTopLeft(scaleX, scaleY) {
     let c = circles_topleft[i];
     fill(c.color);
     noStroke();
-    let x = c.x * scaleX;
-    let y = c.y * scaleY;
+
+    // Animation variables
+    let circleNoiseIndex = (currentIndex + i * 7) % noiseArrayLength;
+    let radiusFactor = map(topLeftCircleSizeNoise[circleNoiseIndex], 0, 1, 0.95, 1.5);
+    // Animation
+    let cOffsetX = map(topLeftCirclePosNoiseX[circleNoiseIndex], 0, 1, -0.8, 0.8) * scaleX;
+    let cOffsetY = map(topLeftCirclePosNoiseY[circleNoiseIndex], 0, 1, -0.8, 0.8) * scaleY;
+    let x = c.x * scaleX + cOffsetX;
+    let y = c.y * scaleY + cOffsetY;
     let r = c.r * ((scaleX + scaleY) / 2);
+    let animateR = r * radiusFactor;
     // Determine whether it is a full circle or a half circle.
     if (c.type === 'full') {
-      ellipse(x, y, r * 2, r * 2);
+      ellipse(x, y, animateR * 2, animateR * 2);
     } else if (c.type === 'arc') {
-      arc(x, y, r * 2, r * 2, c.startAngle, c.endAngle, PIE);
+      arc(x, y, animateR * 2, animateR * 2, c.startAngle, c.endAngle, PIE);
     }
   }
   // Draw lines
   for (let i = 0; i < lines_topleft.length; i++) {
     let l = lines_topleft[i];
     stroke(l.color);
-    strokeWeight(l.weight * ((scaleX + scaleY) / 2));
-    let x1 = l.x1 * scaleX;
-    let y1 = l.y1 * scaleY;
+    // Animation variables
+    let lineNoiseIndex = (currentIndex + i * 2) % noiseArrayLength;
+    let weightFactor = map(noiseArrayLength[lineNoiseIndex], 0, 1, 0.8, 0.2);
+    let lOffsetX = map(topLeftCirclePosNoiseX[lineNoiseIndex], 0, 1, -0.8, 0.8) * scaleX;
+    let lOffsetY = map(topLeftCirclePosNoiseY[lineNoiseIndex], 0, 1, -0.8, 0.8) * scaleY;
+    // Animation
+    strokeWeight(l.weight * ((scaleX + scaleY) / 2) * weightFactor);
+    let x1 = l.x1 * scaleX + lOffsetX;
+    let y1 = l.y1 * scaleY + lOffsetY;
     let x2 = l.x2 * scaleX;
     let y2 = l.y2 * scaleY;
     line(x1, y1, x2, y2);
@@ -803,7 +857,7 @@ function drawGradientTriangle(p1, p2, p3, c1, c2) {
 //---------------- Function: draw bottom right shapes ----------------//
 function drawBottomRight(scaleX, scaleY) {
   push();
-   
+
   translate(width, height); // Move the origin to the bottom right corner.
   scale(-1, -1);            // Horizontal + vertical flip.
   for (let i = 0; i < circles_bottomright_yellow.length; i++) {
