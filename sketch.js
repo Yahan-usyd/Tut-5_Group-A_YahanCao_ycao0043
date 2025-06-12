@@ -53,6 +53,17 @@ function makeRGB(redInputValue, greenInputValue, blueInputValue) {
   }
 }
 
+// New function to create RGBA colors with separate RGB and alpha values
+// This function is used for the shape in the lower right corner
+function makeRGBA(redInputValue, greenInputValue, blueInputValue, alphaInputValue) {
+  return {
+    r: redInputValue,
+    g: greenInputValue,
+    b: blueInputValue,
+    a: alphaInputValue
+  };
+}
+
 /****************** Top left shape data definition ******************/
 const rects_topleft = [
   { x: 0, y: 10, w: 250, h: 280, color: makeRGB(36, 149, 248) },
@@ -256,54 +267,57 @@ const lines_topright_3 = [
 
 /****************** Bottom right shape data definition ******************/
 const circles_bottomright_yellow = [
-  { x: 30, y: -10, r: 180, color: 'rgba(245, 202, 37, 0.3)' },
-  { x: 160, y: 165, r: 28, color: 'rgba(245, 202, 37, 0.7)' },
-  { x: 140, y: 90, r: 20, color: 'rgba(245, 202, 37, 1)' },
-  { x: 180, y: 40, r: 5, color: 'rgba(245, 202, 37, 0.5)' },
-  { x: 160, y: 20, r: 10, color: 'rgba(245, 202, 37, 0.7)' },
+  { x: 30, y: -10, r: 180, color: makeRGBA(245, 202, 37, 0.3) },
+  { x: 160, y: 165, r: 28, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 140, y: 90, r: 20, color: makeRGBA(245, 202, 37, 1) },
+  { x: 180, y: 40, r: 5, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 160, y: 20, r: 10, color: makeRGBA(245, 202, 37, 0.7) },
 ]
 const rects_bottom_right_yellow = [
-  { x: 250, y: 0, w: 250, h: 60, color: 'rgba(245, 202, 37, 1)' },
-  { x: 320, y: 90, w: 180, h: 80, color: 'rgba(245, 202, 37, 0.5)' },
-  { x: 220, y: 170, w: 100, h: 130, color: 'rgba(245, 202, 37, 1)' },
-  { x: 0, y: 250, w: 140, h: 40, color: 'rgba(245, 202, 37, 0.7)' },
-  { x: 0, y: 170, w: 100, h: 120, color: 'rgba(245, 202, 37, 0.5)' },
+  { x: 250, y: 0, w: 250, h: 60, color: makeRGBA(245, 202, 37, 1) },
+  { x: 320, y: 90, w: 180, h: 80, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 220, y: 170, w: 100, h: 130, color: makeRGBA(245, 202, 37, 1) },
+  { x: 0, y: 250, w: 140, h: 40, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 0, y: 170, w: 100, h: 120, color: makeRGBA(245, 202, 37, 0.5) },
 ]
 const rects_bottom_right_blue = [
-  { x: 0, y: 0, w: 100, h: 130, color: 'rgba(17, 99, 247, 0.7)' },
-  { x: 0, y: 130, w: 100, h: 40, color: 'rgba(17, 99, 247, 0.4)' },
-  { x: 30, y: 220, w: 150, h: 40, color: 'rgba(17, 99, 247, 0.5)' },
-  { x: 140, y: 200, w: 80, h: 100, color: 'rgba(17, 99, 247, 0.2)' },
-  { x: 400, y: 200, w: 100, h: 100, color: 'rgba(17, 99, 247, 0.7)' },
+  { x: 0, y: 0, w: 100, h: 130, color: makeRGBA(17, 99, 247, 0.7) },
+  { x: 0, y: 130, w: 100, h: 40, color: makeRGBA(17, 99, 247, 0.4) },
+  { x: 30, y: 220, w: 150, h: 40, color: makeRGBA(17, 99, 247, 0.5) },
+  { x: 140, y: 200, w: 80, h: 100, color: makeRGBA(17, 99, 247, 0.2) },
+  { x: 400, y: 200, w: 100, h: 100, color: makeRGBA(17, 99, 247, 0.7) },
 ]
 const circles_bottomright_blue = [
-  { x: 360, y: 230, r: 20, color: 'rgba(17, 99, 247, 1)' },
-  { x: 320, y: 150, r: 10, color: 'rgba(17, 99, 247, 1)' },
-  { x: 100, y: 220, r: 10, color: 'rgba(17, 99, 247, 1)' },
-  { x: 100, y: 40, r: 10, color: 'rgba(17, 99, 247, 1)' },
-  { x: 320, y: 70, r: 25, color: 'rgba(17, 99, 247, 1)' },
-  { x: 410, y: 210, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 430, y: 210, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 450, y: 210, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 470, y: 210, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 490, y: 210, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 410, y: 230, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 430, y: 230, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 450, y: 230, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 470, y: 230, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 490, y: 230, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 410, y: 250, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 430, y: 250, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 450, y: 250, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 470, y: 250, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 490, y: 250, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 410, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 430, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 450, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 470, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x: 490, y: 270, r: 5, color: 'rgba(17, 99, 247, 1)' },
-  { x1: 410, y1: 290, x2: 430, y2: 290, color: 'rgba(17, 99, 247, 1)' },
-  { x1: 450, y1: 290, x2: 470, y2: 290, color: 'rgba(17, 99, 247, 1)' },
+  { x: 360, y: 230, r: 20, color: makeRGBA(17, 99, 247, 1) },
+  { x: 320, y: 150, r: 10, color: makeRGBA(17, 99, 247, 1) },
+  { x: 100, y: 220, r: 10, color: makeRGBA(17, 99, 247, 1) },
+  { x: 100, y: 40, r: 10, color: makeRGBA(17, 99, 247, 1) },
+  { x: 320, y: 70, r: 25, color: makeRGBA(17, 99, 247, 1) },
+  { x: 410, y: 210, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 430, y: 210, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 450, y: 210, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 470, y: 210, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 490, y: 210, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 410, y: 230, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 430, y: 230, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 450, y: 230, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 470, y: 230, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 490, y: 230, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 410, y: 250, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 430, y: 250, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 450, y: 250, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 470, y: 250, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 490, y: 250, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 410, y: 270, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 430, y: 270, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 450, y: 270, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 470, y: 270, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 490, y: 270, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 410, y: 290, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 430, y: 290, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 450, y: 290, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 470, y: 290, r: 5, color: makeRGBA(17, 99, 247, 1) },
+  { x: 490, y: 290, r: 5, color: makeRGBA(17, 99, 247, 1) },
 ]
 const lines_bottomright = [
   { x1: 0, y1: 200, x2: 180, y2: 200 },
@@ -900,22 +914,39 @@ function drawGradientTriangle(p1, p2, p3, c1, c2) {
 
 //---------------- Function: draw bottom right shapes ----------------//
 function drawBottomRight(scaleX, scaleY) {
+  // Add noise offset for bottom right animation
+  let bottomRightNoiseOffset = frameCount * 0.02;
+  
   push();
 
   translate(width, height); // Move the origin to the bottom right corner.
-  scale(-1, -1);            // Horizontal + vertical flip.
+  scale(-1, -1); // Horizontal + vertical flip.
+  
+  // Draw yellow circles with animated transparency
   for (let i = 0; i < circles_bottomright_yellow.length; i++) {
     let c = circles_bottomright_yellow[i];
-    fill(c.color);
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(bottomRightNoiseOffset + i * 0.1);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    
+    // Use the new color object structure
+    fill(c.color.r, c.color.g, c.color.b, alpha * 255);
     noStroke();
     let x = c.x * scaleX;
     let y = c.y * scaleY;
-    let r = c.r * ((scaleX + scaleY) / 2);
-    ellipse(x, y, r * 2, r * 2);
+    let radius = c.r * ((scaleX + scaleY) / 2);
+    ellipse(x, y, radius * 2, radius * 2);
   }
+  
+  // Draw yellow rectangles with animated transparency
   for (let i = 0; i < rects_bottom_right_yellow.length; i++) {
     let r = rects_bottom_right_yellow[i];
-    fill(r.color);
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(bottomRightNoiseOffset + i * 0.15 + 100);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    
+    // Use the new color object structure
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -924,9 +955,16 @@ function drawBottomRight(scaleX, scaleY) {
       r.h * scaleY
     );
   }
+  
+  // Draw blue rectangles with animated transparency
   for (let i = 0; i < rects_bottom_right_blue.length; i++) {
     let r = rects_bottom_right_blue[i];
-    fill(r.color);
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(bottomRightNoiseOffset + i * 0.12 + 200);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    
+    // Use the new color object structure
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -935,24 +973,43 @@ function drawBottomRight(scaleX, scaleY) {
       r.h * scaleY
     );
   }
+  
+  // Draw blue circles with animated transparency
   for (let i = 0; i < circles_bottomright_blue.length; i++) {
     let c = circles_bottomright_blue[i];
-    fill(c.color);
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(bottomRightNoiseOffset + i * 0.08 + 300);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    
+    // Use the new color object structure
+    fill(c.color.r, c.color.g, c.color.b, alpha * 255);
     noStroke();
     let x = c.x * scaleX;
     let y = c.y * scaleY;
-    let r = c.r * ((scaleX + scaleY) / 2);
-    ellipse(x, y, r * 2, r * 2);
+    let radius = c.r * ((scaleX + scaleY) / 2);
+    ellipse(x, y, radius * 2, radius * 2);
   }
+  
+  // Draw lines with animated transparency
   for (let i = 0; i < lines_bottomright.length; i++) {
     let l = lines_bottomright[i];
-    stroke(makeRGB(17, 99, 247));
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(bottomRightNoiseOffset + i * 0.05 + 400);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    
+    stroke(17, 99, 247, alpha * 255);
     strokeWeight(2);
     line(l.x1 * scaleX, l.y1 * scaleY, l.x2 * scaleX, l.y2 * scaleY);
   }
+  
+  // Draw arcs with animated transparency
   for (let i = 0; i < arcs_bottomright.length; i++) {
     const arcs = arcs_bottomright[i];
-    stroke(makeRGB(17, 99, 247));
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(bottomRightNoiseOffset + i * 0.18 + 500);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    
+    stroke(17, 99, 247, alpha * 255);
     strokeWeight(2);
     noFill();
     arc(
@@ -964,6 +1021,7 @@ function drawBottomRight(scaleX, scaleY) {
       arcs.endAngle,
     );
   }
+  
   pop();
 }
 
