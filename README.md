@@ -16,16 +16,9 @@
 - **Bottom Right Zone:** Arcs rotate continuously with noise-based speed variations
 - **Transparency Effects:** Three zones have breathing-like transparency changes using Perlin noise
 
-## Individual Animation Approach
+## Individual Animation Approach: Perlin Noise(Main) + Time
 
-I chose **Perlin noise** to create organic, smooth animations that evolve over time. This approach allows for complex, natural-looking movements that feel alive and dynamic.
-
-## Animation Driver: Perlin Noise(Main) + Time
-
-I selected **Perlin noise as the primary animation driver** with time-based progression. This choice allows me to:
-- Create smooth, organic movements that feel natural
-- Generate complex animations without requiring user input
-- Create layered animations that work together harmoniously
+I chose **Perlin noise** to create organic, smooth animations that evolve over time, enabling natural-looking transformations in position, scale, rotation, and transparency that feel alive and continuously shifting.
 
 ## Animated Properties and Uniqueness
 
