@@ -133,107 +133,109 @@ const triangles_topleft = [
 ];
 
 /****************** Top right shape data definition ******************/
+// Changed the color definition of the upper right rectangle in the group code
+// Used the newly added makeRGBA() method to prepare for the transparency gradient in combination with noise in the following function.
 const rects_topright_background_yellow = [
-  { x: 0, y: 40, w: 140, h: 20 },
-  { x: 0, y: 100, w: 120, h: 50 },
-  { x: 210, y: 105, w: 60, h: 90 },
-  { x: 460, y: 10, w: 40, h: 30 },
-  { x: 425, y: 10, w: 35, h: 290 },
-  { x: 350, y: 10, w: 5, h: 30 },
-  { x: 340, y: 10, w: 5, h: 30 },
-  { x: 330, y: 10, w: 5, h: 30 },
-  { x: 320, y: 10, w: 5, h: 30 },
-  { x: 310, y: 10, w: 5, h: 30 },
-  { x: 300, y: 10, w: 5, h: 30 },
-  { x: 290, y: 10, w: 5, h: 30 },
-  { x: 280, y: 200, w: 220, h: 40 },
-  { x: 200, y: 195, w: 280, h: 5 },
-  { x: 210, y: 185, w: 30, h: 35 },
-  { x: 250, y: 235, w: 230, h: 25 },
-  { x: 160, y: 215, w: 60, h: 50 },
-  { x: 130, y: 215, w: 20, h: 30 },
+  { x: 0, y: 40, w: 140, h: 20, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 0, y: 100, w: 120, h: 50, color: makeRGBA(245, 202, 37, 0.9) },
+  { x: 210, y: 105, w: 60, h: 90, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 460, y: 10, w: 40, h: 30, color: makeRGBA(245, 202, 37, 0.6) },
+  { x: 425, y: 10, w: 35, h: 290, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 350, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 340, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 330, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 320, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 310, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 300, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 290, y: 10, w: 5, h: 30, color: makeRGBA(245, 202, 37, 0.5) },
+  { x: 280, y: 200, w: 220, h: 40, color: makeRGBA(245, 202, 37, 0.9) },
+  { x: 200, y: 195, w: 280, h: 5, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 210, y: 185, w: 30, h: 35, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 250, y: 235, w: 230, h: 25, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 160, y: 215, w: 60, h: 50, color: makeRGBA(245, 202, 37, 0.6) },
+  { x: 130, y: 215, w: 20, h: 30, color: makeRGBA(245, 202, 37, 0.7) },
 ]
 const rects_topright_background_red = [
-  { x: 0, y: 160, w: 130, h: 50 },
-  { x: 390, y: 195, w: 110, h: 105 },
-  { x: 390, y: 10, w: 35, h: 210 },
-  { x: 360, y: 10, w: 30, h: 210 },
-  { x: 0, y: 230, w: 100, h: 10 },
-  { x: 60, y: 230, w: 40, h: 40 },
-  { x: 0, y: 270, w: 140, h: 20 },
-  { x: 120, y: 210, w: 140, h: 20 },
-  { x: 175, y: 205, w: 145, h: 20 },
-  { x: 290, y: 230, w: 40, h: 20 },
-  { x: 200, y: 220, w: 40, h: 20 },
+  { x: 0, y: 160, w: 130, h: 50, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 390, y: 195, w: 110, h: 105, color: makeRGBA(217, 16, 9, 0.9) },
+  { x: 390, y: 10, w: 35, h: 210, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 360, y: 10, w: 30, h: 210, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 0, y: 230, w: 100, h: 10, color: makeRGBA(217, 16, 9, 0.6) },
+  { x: 60, y: 230, w: 40, h: 40, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 0, y: 270, w: 140, h: 20, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 120, y: 210, w: 140, h: 20, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 175, y: 205, w: 145, h: 20, color: makeRGBA(217, 16, 9, 0.9) },
+  { x: 290, y: 230, w: 40, h: 20, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 200, y: 220, w: 40, h: 20, color: makeRGBA(217, 16, 9, 0.8) },
 ]
 const rects_topright_building_red = [
-  { x: 250, y: 100, w: 35, h: 95 },
-  { x: 255, y: 90, w: 25, h: 15 },
-  { x: 238, y: 170, w: 10, h: 45 },
-  { x: 200, y: 130, w: 35, h: 65 },
-  { x: 174, y: 170, w: 25, h: 25 },
-  { x: 174, y: 162, w: 20, h: 8 },
-  { x: 120, y: 120, w: 55, h: 90, dots: true },
-  { x: 125, y: 110, w: 45, h: 10 },
-  { x: 300, y: 166, w: 30, h: 20 },
-  { x: 328, y: 166, w: 30, h: 25 },
-  { x: 352, y: 120, w: 6, h: 50 },
-  { x: 348, y: 140, w: 3, h: 30 },
-  { x: 258, y: 188, w: 100, h: 5 },
+  { x: 250, y: 100, w: 35, h: 95, color: makeRGBA(217, 16, 9, 0.9) },
+  { x: 255, y: 90, w: 25, h: 15, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 238, y: 170, w: 10, h: 45, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 200, y: 130, w: 35, h: 65, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 174, y: 170, w: 25, h: 25, color: makeRGBA(217, 16, 9, 0.9) },
+  { x: 174, y: 162, w: 20, h: 8, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 120, y: 120, w: 55, h: 90, dots: true, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 125, y: 110, w: 45, h: 10, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 300, y: 166, w: 30, h: 20, color: makeRGBA(217, 16, 9, 0.9) },
+  { x: 328, y: 166, w: 30, h: 25, color: makeRGBA(217, 16, 9, 0.8) },
+  { x: 352, y: 120, w: 6, h: 50, color: makeRGBA(217, 16, 9, 0.7) },
+  { x: 348, y: 140, w: 3, h: 30, color: makeRGBA(217, 16, 9, 0.6) },
+  { x: 258, y: 188, w: 100, h: 5, color: makeRGBA(217, 16, 9, 0.8) },
 ]
 const rects_topright_building_black = [
-  { x: 256, y: 80, w: 3, h: 10 },
-  { x: 260, y: 80, w: 3, h: 10 },
-  { x: 265, y: 80, w: 5, h: 10 },
-  { x: 272, y: 80, w: 3, h: 10 },
-  { x: 276, y: 80, w: 3, h: 10 },
-  { x: 274, y: 75, w: 4, h: 6 },
-  { x: 269, y: 75, w: 4, h: 6 },
-  { x: 263, y: 75, w: 5, h: 6 },
-  { x: 258, y: 75, w: 4, h: 6 },
-  { x: 262, y: 60, w: 5, h: 14 },
-  { x: 268, y: 60, w: 5, h: 14 },
-  { x: 266, y: 25, w: 2, h: 34 },
-  { x: 275, y: 93, w: 1, h: 8 },
-  { x: 258, y: 93, w: 1, h: 8 },
-  { x: 60, y: 140, w: 45, h: 55 },
-  { x: 135, y: 70, w: 5, h: 40 },
-  { x: 460, y: 150, w: 3, h: 40 },
-  { x: 464, y: 150, w: 3, h: 40 },
-  { x: 468, y: 150, w: 3, h: 40 },
-  { x: 472, y: 150, w: 3, h: 40 },
-  { x: 476, y: 150, w: 3, h: 40 },
-  { x: 480, y: 150, w: 3, h: 40 },
-  { x: 484, y: 150, w: 3, h: 40 },
-  { x: 488, y: 150, w: 3, h: 40 },
+  { x: 256, y: 80, w: 3, h: 10, color: makeRGBA(0, 0, 0, 0.9) },
+  { x: 260, y: 80, w: 3, h: 10, color: makeRGBA(0, 0, 0, 0.9) },
+  { x: 265, y: 80, w: 5, h: 10, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 272, y: 80, w: 3, h: 10, color: makeRGBA(0, 0, 0, 0.9) },
+  { x: 276, y: 80, w: 3, h: 10, color: makeRGBA(0, 0, 0, 0.9) },
+  { x: 274, y: 75, w: 4, h: 6, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 269, y: 75, w: 4, h: 6, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 263, y: 75, w: 5, h: 6, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 258, y: 75, w: 4, h: 6, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 262, y: 60, w: 5, h: 14, color: makeRGBA(0, 0, 0, 0.9) },
+  { x: 268, y: 60, w: 5, h: 14, color: makeRGBA(0, 0, 0, 0.9) },
+  { x: 266, y: 25, w: 2, h: 34, color: makeRGBA(0, 0, 0, 0.7) },
+  { x: 275, y: 93, w: 1, h: 8, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 258, y: 93, w: 1, h: 8, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 60, y: 140, w: 45, h: 55, color: makeRGBA(0, 0, 0, 0.8) },
+  { x: 135, y: 70, w: 5, h: 40, color: makeRGBA(0, 0, 0, 0.7) },
+  { x: 460, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 464, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 468, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 472, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 476, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 480, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 484, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
+  { x: 488, y: 150, w: 3, h: 40, color: makeRGBA(0, 0, 0, 0.6) },
 ]
 const rects_topright_building_yellow = [
-  { x: 300, y: 110, w: 45, h: 19 },
-  { x: 300, y: 130, w: 45, h: 2 },
-  { x: 300, y: 133, w: 45, h: 2 },
-  { x: 300, y: 136, w: 45, h: 2 },
-  { x: 300, y: 139, w: 45, h: 2 },
-  { x: 300, y: 142, w: 45, h: 2 },
-  { x: 300, y: 145, w: 45, h: 2 },
-  { x: 300, y: 148, w: 45, h: 2 },
-  { x: 300, y: 151, w: 45, h: 2 },
-  { x: 300, y: 154, w: 45, h: 2 },
-  { x: 300, y: 157, w: 45, h: 2 },
-  { x: 300, y: 160, w: 45, h: 2 },
-  { x: 300, y: 163, w: 45, h: 2 },
-  { x: 300, y: 166, w: 30, h: 2 },
-  { x: 300, y: 169, w: 30, h: 2 },
-  { x: 300, y: 172, w: 30, h: 2 },
-  { x: 300, y: 175, w: 30, h: 2 },
-  { x: 300, y: 178, w: 30, h: 2 },
-  { x: 300, y: 181, w: 30, h: 2 },
-  { x: 300, y: 184, w: 30, h: 2 },
-  { x: 300, y: 187, w: 30, h: 2 },
-  { x: 20, y: 170, w: 25, h: 35 },
+  { x: 300, y: 110, w: 45, h: 19, color: makeRGBA(245, 202, 37, 0.9) },
+  { x: 300, y: 130, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 133, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 136, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 139, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 142, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 145, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 148, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 151, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 154, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 157, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 160, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 163, w: 45, h: 2, color: makeRGBA(245, 202, 37, 0.8) },
+  { x: 300, y: 166, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 169, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 172, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 175, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 178, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 181, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 184, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 300, y: 187, w: 30, h: 2, color: makeRGBA(245, 202, 37, 0.7) },
+  { x: 20, y: 170, w: 25, h: 35, color: makeRGBA(245, 202, 37, 0.8) },
 ]
 const rects_topright_background_white = [
-  { x: 330, y: 220, w: 60, h: 80, dots: true },
-  { x: 30, y: 110, w: 60, h: 80, dots: true }
+  { x: 330, y: 220, w: 60, h: 80, dots: true, color: makeRGBA(248, 249, 251, 0.9) },
+  { x: 30, y: 110, w: 60, h: 80, dots: true, color: makeRGBA(248, 249, 251, 0.9) }
 ]
 const lines_topright_1 = [
   { x1: 0, y1: 210, x2: 175, y2: 210 }
@@ -428,11 +430,30 @@ function drawDotsInRect(rectObj, scaleX = 1, scaleY = 1) {
   let gapX = 10 * scaleX;
   let gapY = 5 * scaleY;
 
+  // Step1: Add noise offset for dots animation
+  let dotsNoiseOffset = frameCount * 0.02;
+
   fill(245, 202, 37);
   noStroke();
+  
+  // Step2: Track dot index for different noise offsets
+  let dotIndex = 0;
   for (let x = rectObj.x + gapX / 2; x < rectObj.x + rectObj.w; x += gapX) {
     for (let y = rectObj.y + gapY / 2; y < rectObj.y + rectObj.h; y += gapY) {
-      ellipse(x, y, dotR, dotR);
+      // Step3: Generate noise-based position offset for each dot
+      let noiseX = noise(dotsNoiseOffset + dotIndex * 0.1);
+      let noiseY = noise(dotsNoiseOffset + dotIndex * 0.1 + 100);
+      
+      // Step4: Map noise to position offset (small range for subtle movement)
+      let offsetX = map(noiseX, 0, 1, -2, 2) * scaleX;
+      let offsetY = map(noiseY, 0, 1, -2, 2) * scaleY;
+      
+      // Step5: Apply offset to dot position
+      let dotX = x + offsetX;
+      let dotY = y + offsetY;
+      
+      ellipse(dotX, dotY, dotR, dotR);
+      dotIndex++;
     }
   }
   stroke(20);
@@ -459,21 +480,23 @@ function drawLinesInCircle(circleObj) {
 /************************ Function zone 2 - Drawing four parts ************************/
 //---------------- Function: draw top left shapes ----------------//
 function drawTopLeft(scaleX, scaleY) {
-  // get current noise array
+  // Get current frame index for looping noise array
   let currentIndex = frameCount % noiseArrayLength;
+  // Draw animated rectangles with slight position and size jitter
   for (let i = 0; i < rects_topleft.length; i++) {
     let r = rects_topleft[i];
     fill(r.color);
     noStroke();
 
-    // Get values ​​from a pre-generated noise array
+    // Animation: apply noise for subtle movement and scale
+    // Get a stable noise index for this frame and this shape
     let rectNoiseIndex = (currentIndex + i * 5) % noiseArrayLength;
-    // Size noise: let the width and height fluctuate slightly above and below the original size
+    // Step 1: Size noise-let the width and height fluctuate slightly above and below the original size
     let sizeFactor = map(topLeftCircleSizeNoise[rectNoiseIndex], 0, 1, 0.98, 1.03);
-    // Position noise
+    // Step 2: Position fluctuation based on separate noise arrays
     let offsetX = map(topLeftRectPosNoiseX[rectNoiseIndex], 0, 1, -1, 1) * scaleX;
     let offsetY = map(topLeftRectPosNoiseY[rectNoiseIndex], 0, 1, -1, 1) * scaleY;
-    // Apply noise animation
+    // Step 3: Calculate animated size and adjusted position (to keep center aligned)
     let startW = r.w * scaleX;
     let startH = r.h * scaleY;
     let animatedW = startW * sizeFactor;
@@ -493,6 +516,7 @@ function drawTopLeft(scaleX, scaleY) {
     beginShape();
     for (let j = 0; j < t.points.length; j++) {
       let point = t.points[j];
+      // Slight noise-based offset for each vertex
       let tOffsetX = map(topLeftCirclePosNoiseX[triangleNoiseIndex], 0, 1, -0.8, 0.8) * scaleX;
       let tOffsetY = map(topLeftCirclePosNoiseY[triangleNoiseIndex], 0, 1, -0.8, 0.8) * scaleY;
       let x = point.x * scaleX + tOffsetX;
@@ -507,14 +531,16 @@ function drawTopLeft(scaleX, scaleY) {
     fill(c.color);
     noStroke();
 
-    // Animation variables
+    // Step 1: Animation variables
     let circleNoiseIndex = (currentIndex + i * 7) % noiseArrayLength;
+    // Radius fluctuation
     let radiusFactor = map(topLeftCircleSizeNoise[circleNoiseIndex], 0, 1, 0.95, 1.5);
-    // Animation
+    // Step 2: Position fluctuation
     let cOffsetX = map(topLeftCirclePosNoiseX[circleNoiseIndex], 0, 1, -0.8, 0.8) * scaleX;
     let cOffsetY = map(topLeftCirclePosNoiseY[circleNoiseIndex], 0, 1, -0.8, 0.8) * scaleY;
     let x = c.x * scaleX + cOffsetX;
     let y = c.y * scaleY + cOffsetY;
+    // Step 3: Calculate animated radius and draw full or arc shape
     let r = c.r * ((scaleX + scaleY) / 2);
     let animateR = r * radiusFactor;
     // Determine whether it is a full circle or a half circle.
@@ -528,9 +554,9 @@ function drawTopLeft(scaleX, scaleY) {
   for (let i = 0; i < lines_topleft.length; i++) {
     let l = lines_topleft[i];
     stroke(l.color);
-    // Animation variables
+    // Animation variables: use noise to vary stroke weight and position slightly
     let lineNoiseIndex = (currentIndex + i * 2) % noiseArrayLength;
-    let weightFactor = map(noiseArrayLength[lineNoiseIndex], 0, 1, 0.8, 0.2);
+    let weightFactor = map(topLeftCircleSizeNoise[lineNoiseIndex], 0, 1, 0.8, 1.2); // or another appropriate noise array
     let lOffsetX = map(topLeftCirclePosNoiseX[lineNoiseIndex], 0, 1, -0.8, 0.8) * scaleX;
     let lOffsetY = map(topLeftCirclePosNoiseY[lineNoiseIndex], 0, 1, -0.8, 0.8) * scaleY;
     // Animation
@@ -554,13 +580,23 @@ function drawTopRight(scaleX, scaleY) {
   // To make the animation speed have a natural fluctuation effect
   let speedFactor = map(noise(topRightNoiseOffset), 0, 1, 0.8, 1.2);
 
+  // Add noise offset for top right transparency animation
+  let topRightTransparencyNoiseOffset = frameCount * 0.015;
+
   push();
   translate(width, 0); // Move the origin to the right side
   scale(-1, 1);        // Flip horizontally
   // Draw background shapes
   for (let i = 0; i < rects_topright_background_yellow.length; i++) {
     let r = rects_topright_background_yellow[i];
-    fill(makeRGB(245, 202, 37));
+    // Step 1: Use Perlin noise to generate a unique alpha base value for this rectangle
+    let alphaNoise = noise(topRightTransparencyNoiseOffset + i * 0.1);
+    // Step 2: Map the noise value (0 to 1) to alpha range (0 to 1)
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+
+    // Step 3: Apply dynamic alpha to fill color (converted to 0–255 scale)
+    // Use the new color object structure makeRGBA()
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -569,9 +605,13 @@ function drawTopRight(scaleX, scaleY) {
       r.h * scaleY
     );
   }
+
+  // Draw red background rectangles (same alpha animation logic)
   for (let i = 0; i < rects_topright_background_red.length; i++) {
     let r = rects_topright_background_red[i];
-    fill(makeRGB(217, 16, 9));
+    let alphaNoise = noise(topRightTransparencyNoiseOffset + i * 0.12 + 100);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -581,11 +621,19 @@ function drawTopRight(scaleX, scaleY) {
     );
   }
   pop();
+
+  // Draw white background rectangles
   for (let i = 0; i < rects_topright_background_white.length; i++) {
     let r = rects_topright_background_white[i];
-    let fillColor = makeRGB(248, 249, 251);
-    fill(fillColor);
+    // Step 1: Generate noise-based alpha
+    let alphaNoise = noise(topRightTransparencyNoiseOffset + i * 0.15 + 200);
+    // Step 2: Map to alpha range and apply to fill
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+
+    // Use the new color object structure with dynamic alpha
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
+    // Draw white rectangle with optional decorative dots
     let x = width - (r.x + r.w) * scaleX;
     let y = r.y * scaleY;
     let w = r.w * scaleX;
@@ -602,7 +650,9 @@ function drawTopRight(scaleX, scaleY) {
   scale(-1, 1);
   for (let i = 0; i < rects_topright_building_red.length; i++) {
     let r = rects_topright_building_red[i];
-    fill(makeRGB(217, 16, 9));
+    let alphaNoise = noise(topRightTransparencyNoiseOffset + i * 0.08 + 300);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -613,7 +663,9 @@ function drawTopRight(scaleX, scaleY) {
   }
   for (let i = 0; i < rects_topright_building_black.length; i++) {
     let r = rects_topright_building_black[i];
-    fill(makeRGB(0, 0, 0));
+    let alphaNoise = noise(topRightTransparencyNoiseOffset + i * 0.05 + 400);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -624,7 +676,12 @@ function drawTopRight(scaleX, scaleY) {
   }
   for (let i = 0; i < rects_topright_building_yellow.length; i++) {
     let r = rects_topright_building_yellow[i];
-    fill(makeRGB(245, 202, 37));
+    // Generate noise-based alpha value (0 to 1)
+    let alphaNoise = noise(topRightTransparencyNoiseOffset + i * 0.06 + 500);
+    let alpha = map(alphaNoise, 0, 1, 0, 1);
+
+    // Use the new color object structure with dynamic alpha
+    fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
     rect(
       r.x * scaleX,
@@ -916,72 +973,62 @@ function drawGradientTriangle(p1, p2, p3, c1, c2) {
 function drawBottomRight(scaleX, scaleY) {
   // Add noise offset for bottom right animation
   let bottomRightNoiseOffset = frameCount * 0.02;
-  
+
   push();
 
   translate(width, height); // Move the origin to the bottom right corner.
   scale(-1, -1); // Horizontal + vertical flip.
-  
+
   // Draw yellow circles with animated transparency
   for (let i = 0; i < circles_bottomright_yellow.length; i++) {
     let c = circles_bottomright_yellow[i];
-    // Generate noise-based alpha value (0 to 1)
+
+    // Step 1: Generate Perlin noise value (range 0–1)
+    // 'i * 0.1' adds variation per circle; no offset means it's the base group
     let alphaNoise = noise(bottomRightNoiseOffset + i * 0.1);
+
+    // Step 2: Map noise to alpha (transparency) between 0 and 1
+    // Higher noise = more opaque
     let alpha = map(alphaNoise, 0, 1, 0, 1);
-    
-    // Use the new color object structure
+
+    // Step 3: Set fill color using RGBA, with alpha scaled to 255
     fill(c.color.r, c.color.g, c.color.b, alpha * 255);
     noStroke();
+
+    // Step 4: Scale position and radius based on canvas scaling
     let x = c.x * scaleX;
     let y = c.y * scaleY;
     let radius = c.r * ((scaleX + scaleY) / 2);
+
+    // Step 5: Draw the circle
     ellipse(x, y, radius * 2, radius * 2);
   }
-  
+
   // Draw yellow rectangles with animated transparency
   for (let i = 0; i < rects_bottom_right_yellow.length; i++) {
     let r = rects_bottom_right_yellow[i];
-    // Generate noise-based alpha value (0 to 1)
     let alphaNoise = noise(bottomRightNoiseOffset + i * 0.15 + 100);
     let alpha = map(alphaNoise, 0, 1, 0, 1);
-    
-    // Use the new color object structure
     fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
-    rect(
-      r.x * scaleX,
-      r.y * scaleY,
-      r.w * scaleX,
-      r.h * scaleY
-    );
+    rect(r.x * scaleX, r.y * scaleY, r.w * scaleX, r.h * scaleY);
   }
-  
+
   // Draw blue rectangles with animated transparency
   for (let i = 0; i < rects_bottom_right_blue.length; i++) {
     let r = rects_bottom_right_blue[i];
-    // Generate noise-based alpha value (0 to 1)
     let alphaNoise = noise(bottomRightNoiseOffset + i * 0.12 + 200);
     let alpha = map(alphaNoise, 0, 1, 0, 1);
-    
-    // Use the new color object structure
     fill(r.color.r, r.color.g, r.color.b, alpha * 255);
     noStroke();
-    rect(
-      r.x * scaleX,
-      r.y * scaleY,
-      r.w * scaleX,
-      r.h * scaleY
-    );
+    rect(r.x * scaleX, r.y * scaleY, r.w * scaleX, r.h * scaleY);
   }
-  
+
   // Draw blue circles with animated transparency
   for (let i = 0; i < circles_bottomright_blue.length; i++) {
     let c = circles_bottomright_blue[i];
-    // Generate noise-based alpha value (0 to 1)
     let alphaNoise = noise(bottomRightNoiseOffset + i * 0.08 + 300);
     let alpha = map(alphaNoise, 0, 1, 0, 1);
-    
-    // Use the new color object structure
     fill(c.color.r, c.color.g, c.color.b, alpha * 255);
     noStroke();
     let x = c.x * scaleX;
@@ -989,39 +1036,74 @@ function drawBottomRight(scaleX, scaleY) {
     let radius = c.r * ((scaleX + scaleY) / 2);
     ellipse(x, y, radius * 2, radius * 2);
   }
-  
-  // Draw lines with animated transparency
+
+  // Draw animated blue lines with transparency
   for (let i = 0; i < lines_bottomright.length; i++) {
     let l = lines_bottomright[i];
-    // Generate noise-based alpha value (0 to 1)
     let alphaNoise = noise(bottomRightNoiseOffset + i * 0.05 + 400);
     let alpha = map(alphaNoise, 0, 1, 0, 1);
-    
     stroke(17, 99, 247, alpha * 255);
     strokeWeight(2);
     line(l.x1 * scaleX, l.y1 * scaleY, l.x2 * scaleX, l.y2 * scaleY);
   }
-  
-  // Draw arcs with animated transparency
+
+
+  // Draw arcs with animated transparency and rotation
   for (let i = 0; i < arcs_bottomright.length; i++) {
     const arcs = arcs_bottomright[i];
-    // Generate noise-based alpha value (0 to 1)
+
+    // Generate noise-based alpha value (range: 0 to 1)
+    // 'i * 0.18' ensures each shape has a unique noise input
+    // '+500' offsets the noise space to avoid interference with other noise calls
     let alphaNoise = noise(bottomRightNoiseOffset + i * 0.18 + 500);
+    // Map Perlin noise output (0–1) directly to an alpha range (0–1)
     let alpha = map(alphaNoise, 0, 1, 0, 1);
-    
+
+    // Generate noise-based rotation speed (per shape)
+    // Again, 'i * 0.1' creates variation between shapes
+    // '+600' further offsets the noise space for independence from alpha
+    let rotationNoise = noise(bottomRightNoiseOffset + i * 0.1 + 600);
+    // Map the noise (0–1) to a small speed range (0.005 to 0.02 radians/frame)
+    let rotationSpeed = map(rotationNoise, 0, 1, 0.005, 0.02);
+
+    // Calculate normalized rotation progress using frame count
+    // (frameCount * speed) creates continuous motion
+    // '% 1' keeps the result within [0, 1] to feed into the easing function
+    let rotationProgress = (frameCount * rotationSpeed) % 1;
+    // Apply easing function to create smooth acceleration/deceleration
+    // Multiply by TWO_PI to convert normalized progress to angle (0 to 2π radians)
+    let rotationAngle = easeAnimation(rotationProgress) * TWO_PI;
+
+    // Calculate the arc’s center position in screen space
+    // Multiply relative center coordinates by scaling factors to adapt to canvas size
+    let arcCenterX = arcs.cx * scaleX;
+    let arcCenterY = arcs.cy * scaleY;
+
+    // Scale the arc radius according to average of X and Y scaling
+    // (in case scaleX ≠ scaleY, this keeps it roughly proportional)
+    let arcRadius = arcs.radius * ((scaleX + scaleY) / 2);
+
+    // Apply rotation around arc center
+    push();
+    translate(arcCenterX, arcCenterY);
+    rotate(rotationAngle);
+    translate(-arcCenterX, -arcCenterY);
+
     stroke(17, 99, 247, alpha * 255);
     strokeWeight(2);
     noFill();
     arc(
-      arcs.cx * scaleX,
-      arcs.cy * scaleY,
-      arcs.radius * ((scaleX + scaleY) / 2),
-      arcs.radius * ((scaleX + scaleY) / 2),
+      arcCenterX,
+      arcCenterY,
+      arcRadius,
+      arcRadius,
       arcs.startAngle,
       arcs.endAngle,
     );
+
+    pop();
   }
-  
+
   pop();
 }
 
