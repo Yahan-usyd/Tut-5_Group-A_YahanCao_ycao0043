@@ -76,7 +76,30 @@ topLeftRectSizeNoise.push(noise(i * noiseStep));
 topLeftRectPosNoiseX.push(noise(i * noiseStep + 10));
 topLeftRectPosNoiseY.push(noise(i * noiseStep + 20));
 ```
-**How it works:** Creates independent noise sequences for different animation properties, ensuring smooth, organic movement.
+**How it works:** 
+- **Pre-generated Noise Arrays:** Creates three separate noise arrays during setup to avoid real-time calculation overhead
+- **Independent Movement:** Each array controls different properties (size, position X, position Y) to create independent, organic movement patterns
+- **Noise Offsets:** Uses different offsets (+10, +20) to ensure each property has unique noise sequences, preventing synchronized movement
+- **Smooth Transitions:** Perlin noise provides coherent randomness that creates smooth transitions between frames, avoiding jarring movements
+- **Performance Optimization:** Pre-calculating noise values reduces computational load during animation rendering
+
+**Application in drawTopLeft() function:**
+```javascript
+// Get current frame index for looping noise array
+let currentIndex = frameCount % noiseArrayLength;
+// Apply noise for subtle movement and scale
+let rectNoiseIndex = (currentIndex + i * 5) % noiseArrayLength;
+// Size noise - let width and height fluctuate slightly
+let sizeFactor = map(topLeftCircleSizeNoise[rectNoiseIndex], 0, 1, 0.98, 1.03);
+// Position fluctuation based on separate noise arrays
+let offsetX = map(topLeftRectPosNoiseX[rectNoiseIndex], 0, 1, -1, 1) * scaleX;
+let offsetY = map(topLeftRectPosNoiseY[rectNoiseIndex], 0, 1, -1, 1) * scaleY;
+```
+**Key Implementation Details:**
+- **Frame-based Indexing:** Uses `frameCount % noiseArrayLength` to cycle through pre-generated noise values
+- **Individual Shape Variation:** Each shape gets a unique noise index with `+ i * 5` to create varied movement patterns
+- **Mapping to Animation Range:** Converts noise values (0-1) to practical animation ranges (size: 0.98-1.03, position: ±1 pixel)
+- **Responsive Scaling:** Applies scaleX/scaleY to maintain proportional movement across different screen sizes 
 
 ### 2. **Line Grouping and Orientation Detection**
 ```javascript
